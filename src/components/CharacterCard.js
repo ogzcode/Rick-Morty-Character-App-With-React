@@ -1,4 +1,11 @@
+import React from "react";
+
 function CharacterCard(props) {
+    let characterValue = {
+        "Species": props.character.name,
+        "Gender": props.character.gender,
+        "Location": props.character.location.name
+    };
     return (
         <div className='card border-light bg-dark text-white' style={{ width: "560px" }}>
             <div className='row g-0'>
@@ -7,13 +14,15 @@ function CharacterCard(props) {
                 </div>
                 <div className='col-7'>
                     <div className='card-body'>
-                        <h5 class="card-title">{props.character.name}</h5>
-                        <small class="text-muted">Species:</small>
-                        <p className='card-text mb-1'>{props.character.species}</p>
-                        <small class="text-muted">Gender:</small>
-                        <p className='card-text mb-1'>{props.character.gender}</p>
-                        <small class="text-muted">Location:</small>
-                        <p className='card-text mb-0'>{props.character.location.name}</p>
+                        <h5 className="card-title">{props.character.name}</h5>
+                        {
+                            Object.keys(characterValue).map((d, i) => (
+                                <React.Fragment key={i}>
+                                    <small className="text-muted">{d}</small>
+                                    <p className="card-text mb-1">{characterValue[d]}</p>
+                                </React.Fragment>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
