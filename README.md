@@ -7,4 +7,7 @@ API Kaynağı : https://rickandmortyapi.com/
 * Bootstrap
 * axios
 
+### Ekran Görüntüsü
+![resim](https://user-images.githubusercontent.com/58819819/212125965-f768b691-51b3-4e67-8886-842cd30df0f5.png)
+
 
