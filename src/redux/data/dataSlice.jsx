@@ -1,16 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+//Pagination için kullanılan async thunk
 export const getData = createAsyncThunk("data/getData", async page => {
     const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`);
-    //const res = await axios.get(`http://localhost:7000/data`);
     return res.data;
 });
 
+//Filter için kullanılan async thunk
 export const getDataWithURL = createAsyncThunk("data/getDataWithURL", async (url) => {
     const res = await axios.get(`https://rickandmortyapi.com/api/character${url}`);
-    //const res = await axios.get(`http://localhost:7000/data`);
-    console.log(res.data);
+    return res.data;
+});
+
+//Karakterleri isimleri ile aramak için kullanılan async thunk
+export const getDataWithName = createAsyncThunk("data/getDataWithName", async (name) => {
+    const res = await axios.get(`https://rickandmortyapi.com/api/character/?name=${name}`);
     return res.data;
 });
 
@@ -45,6 +51,10 @@ export const dataSlice = createSlice({
             .addCase(getDataWithURL.fulfilled, (state, action) => {
                 state.characterData = action.payload.results;
             })
+            .addCase(getDataWithName.fulfilled, (state, action) => {
+                state.characterData = action.payload.results;
+            }
+        );
     }
 });
 

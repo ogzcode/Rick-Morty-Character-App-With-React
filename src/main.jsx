@@ -37,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/dead",
         element: <CharacterList/>
+      },
+      {
+        path: "/search",
+        element: <CharacterList/>
       }
     ]
   }
